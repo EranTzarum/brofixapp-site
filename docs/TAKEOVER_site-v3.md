@@ -12,18 +12,16 @@ Public site for the Brofix app: the legal pages Google OAuth and the Play/App St
 - Legal text: privacy controllers are the three founders (ערן דוד צארום, חושן נוסבאום / Choshen Nusbaum, נווה בר חמה); button label "יוצא/ת לדרך" / "Heading out"; brand "Brofix". Same text in the app's legal drafts (synced to the app by the builder session, PR #41).
 
 ## Where we stopped
-Site is live and complete for now. Waiting on Eran for real app screenshots from build 1.2.0.
+Site is live and complete. 2026-10-22: Eran decided the drawn app screens stay; no real screenshots needed.
 
 ## Next steps
-1. When screenshots arrive (folder `site/screens-in` next to the BroFix production repo), replace the drawn phones: hero phone and the customer/pro switch (`scripts/appscreens.mjs` → `src/partials/appscreens.*.html`), webp, both languages; run `node build.mjs && node scripts/check.mjs`; push to main (deploys).
-2. Store links: swap the "בקרוב" spans for links in `src/pages/*/index.html` and `pros.html` once Play / App Store URLs exist.
-3. Terms page (`/terms`, he+en) once Eran approves the terms text.
+1. Store links: swap the "בקרוב" spans for links in `src/pages/*/index.html` and `pros.html` once Play / App Store URLs exist.
+2. Terms page (`/terms`, he+en) once Eran approves the terms text.
 
 ## Open decisions
 - Terms text: not approved yet · options: publish draft / wait for lawyer · recommendation: wait for lawyer review.
 
 ## Owner to-dos
-- Take 5-6 screenshots on 1.2.0 (customer home, quotes, live arrival map, pro requests map, quote form, jobs), light and dark.
 - Approve terms text when ready.
 
 ## Rules that applied

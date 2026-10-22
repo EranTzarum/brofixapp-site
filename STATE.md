@@ -8,7 +8,7 @@ Last updated: 2026-10-22
 Site v3 live on main (`1ae60da`), deployed by GitHub Actions from `dist/`; legal pages verified with Google.
 
 ## In flight
-Nothing running. Waiting for real app screenshots from build 1.2.0.
+Nothing running. Drawn app screens stay (Eran, 2026-10-22).
 
 ## Next
-Replace drawn phones with real screenshots; add store links and a terms page when available.
+Add store links and a terms page when available.
