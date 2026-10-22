@@ -1,11 +1,14 @@
-# BroFix public site (brofixapp.com) - current state
+# Brofix public site (brofixapp.com) - current state
 
-Updated: 2026-10-22
+Last updated: 2026-10-22
 
-## Where we are
+**Resume (site-v3):** see docs/TAKEOVER_site-v3.md
 
-Live site on main (old flat layout, legal pages approved and verified with Google). feature/site-v2 holds the new src/ skeleton: build, check gate, he/en pairs for index, privacy, delete-account, theme and language toggles. Visual design is still the old plain one.
+## Done
+Site v3 live on main (`1ae60da`), deployed by GitHub Actions from `dist/`; legal pages verified with Google.
+
+## In flight
+Nothing running. Waiting for real app screenshots from build 1.2.0.
 
 ## Next
-
-Site v2: responsive real design, home page with app screens and teaser video, /pros page for professionals, accessibility statement, 404, sitemap, OG images. Then switch Pages to Actions deploy of dist/.
+Replace drawn phones with real screenshots; add store links and a terms page when available.
