@@ -48,7 +48,12 @@ th { color: var(--muted); font-weight: 600; }
 a { color: var(--accent-ink); }
 .mail { font-weight: 600; direction: ltr; unicode-bidi: embed; }
 footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-@font-face { font-family: "Rubik"; font-weight: 400; font-style: normal; font-display: swap; src: url("/assets/fonts/Rubik_400Regular.ttf") format("truetype"); }
-@font-face { font-family: "Rubik"; font-weight: 700; font-style: normal; font-display: swap; src: url("/assets/fonts/Rubik_700Bold.ttf") format("truetype"); }
+@font-face { font-family: "Rubik"; font-weight: 400; font-style: normal; font-display: swap; src: url("/assets/fonts/Rubik_400Regular.woff2") format("woff2"); }
+@font-face { font-family: "Rubik"; font-weight: 700; font-style: normal; font-display: swap; src: url("/assets/fonts/Rubik_700Bold.woff2") format("woff2"); }
 .brand img { display: block; height: 36px; width: auto; }
 @media (prefers-color-scheme: dark) { .brand img { background: #fff; border-radius: 10px; padding: 4px 10px; } }
+.hero { position: relative; margin: 8px 0 28px; padding: 28px 22px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, var(--card)), var(--card) 70%); overflow: hidden; }
+.hero h1 { font-size: clamp(28px, 6vw, 40px); margin-bottom: 12px; }
+.hero p { margin: 0 0 8px; font-size: 18px; }
+.hero .badge { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 999px; background: var(--accent); color: #2b1c0b; font-size: 14px; font-weight: 700; }
+.hero img.mark { position: absolute; inset-inline-end: -28px; bottom: -28px; width: 150px; opacity: .16; pointer-events: none; }
