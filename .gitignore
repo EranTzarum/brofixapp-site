@@ -5,3 +5,5 @@ dist/
 .swarm/
 .hive-mind/
 .claude/settings.local.json
+.claude/proven-config.json
+.claude/.proven-config-version
