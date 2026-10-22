@@ -15,7 +15,9 @@ const T = {
     requests: 'בקשות', mapv: 'מפה', listv: 'רשימה', approx: 'המיקומים במפה מקורבים (כקילומטר)', urgent: 'דחוף',
     today: 'היום', sendq: 'לשליחת הצעה', newq: 'הצעה חדשה', price: 'מחיר', depart: 'מתי יוצאים',
     now: 'עכשיו', in30: 'בעוד 30 דק׳', in60: 'בעוד שעה', other: 'מועד אחר', send: 'שליחה',
-    tabsC: ['בית', 'ארכיון', '', 'שמורים', 'הגדרות'], tabsP: ['בקשות', 'ההצעות שלי', 'עבודות', 'הגדרות'],
+    hello: 'בוקר טוב, דנה', whatfix: 'מה צריך לתקן?', active: 'פעיל עכשיו', onwayShort: 'בדרך אליך',
+    cats: ['אינסטלציה', 'חשמל', 'מנעולנות', 'הנדימן', 'מיזוג אוויר', 'צביעה', 'מכשירי חשמל', 'גז', 'אחר'],
+    tabsC: ['בית', 'שמורים', '', 'ארכיון', 'הגדרות'], tabsP: ['בקשות', 'ההצעות שלי', 'עבודות', 'הגדרות'],
   },
   en: {
     title: 'What it looks like in the app', sub: 'Pick a side and see your screens.', note: 'Illustration with sample data.',
@@ -26,10 +28,13 @@ const T = {
     requests: 'Requests', mapv: 'Map', listv: 'List', approx: 'Map locations are approximate (~1 km)', urgent: 'Urgent',
     today: 'Today', sendq: 'Send a quote', newq: 'New quote', price: 'Price', depart: 'When you leave',
     now: 'Now', in30: 'In 30 min', in60: 'In an hour', other: 'Other time', send: 'Send',
-    tabsC: ['Home', 'Archive', '', 'Saved', 'Settings'], tabsP: ['Requests', 'My quotes', 'Jobs', 'Settings'],
+    hello: 'Good morning, Dana', whatfix: 'What needs fixing?', active: 'Active now', onwayShort: 'On the way',
+    cats: ['Plumbing', 'Electrical', 'Locksmith', 'Handyman', 'Air con', 'Painting', 'Appliances', 'Gas', 'Other'],
+    tabsC: ['Home', 'Saved', '', 'Archive', 'Settings'], tabsP: ['Requests', 'My quotes', 'Jobs', 'Settings'],
   },
 };
 
+const ICON_WRENCH = '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5a2.1 2.1 0 0 0 3 3l5.8-5.8a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.6-.4-.4-2.6z"/>';
 const ICON = {
   home: '<path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>',
   archive: '<rect x="3" y="4" width="18" height="5" rx="1.5"/><path d="M5 9v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9M10 13h4"/>',
@@ -42,6 +47,17 @@ const ICON = {
   back: '<path d="m9 6 6 6-6 6"/>',
   star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
 };
+const CAT = [
+  '<path d="M3 9h9a4 4 0 0 1 4 4v1"/><path d="M8.5 9V5.5M5.5 5.5h6"/><path d="M16 17.5c0 1.2-.7 2-1.6 2s-1.6-.8-1.6-2c0-1 1.6-2.7 1.6-2.7s1.6 1.7 1.6 2.7z"/>',
+  '<path d="M13 2.5 5.5 13h6l-1 8.5L18 11h-6l1-8.5z"/>',
+  '<circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M21 12v2.5"/>',
+  ICON_WRENCH,
+  '<path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/><path d="m9.5 4.5 2.5 1.6 2.5-1.6M9.5 19.5l2.5-1.6 2.5 1.6"/>',
+  '<rect x="3.5" y="3" width="13.5" height="6" rx="2"/><path d="M17 6h3v6h-8v3"/><rect x="10.5" y="15" width="3" height="6.5" rx="1.2"/>',
+  '<rect x="4" y="2.5" width="16" height="19" rx="3"/><circle cx="12" cy="13.5" r="4.5"/><path d="M8 6.5h.01M11 6.5h3"/>',
+  '<path d="M12 21.5c3.9 0 6.5-2.6 6.5-6.2 0-3.7-2.6-6.2-4.9-9.8-.9 2.3-1.9 3.6-3.4 4.6-.4-1.3-1-2.3-1.9-3.1-1.4 2.2-2.8 4.7-2.8 7.7 0 3.6 2.6 6.8 6.5 6.8z"/>',
+  '<circle cx="6" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/>',
+];
 const svg = (k, cls = '') => `<svg${cls ? ` class="${cls}"` : ''} viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
 
 // Tab bar: active tab = icon in a tinted 56x30 pill, label in primaryText. Customer has a raised center "+".
@@ -83,9 +99,18 @@ function screens(t) {
           ${on ? `<span class="m-btn">${t.choose}</span>` : ''}</div>`;
   const customer = `
     <figure class="phone"><div class="m-screen">
+      <header class="m-head"><b>${t.hello}</b><small>${t.whatfix}</small></header>
+      <div class="m-body">
+        <div class="m-cats">${t.cats.map((c, i) => `<span><i><svg viewBox="0 0 24 24" aria-hidden="true">${CAT[i]}</svg></i>${c}</span>`).join('')}</div>
+        <b class="m-group">${t.active} <span>1</span></b>
+        <div class="m-card live"><div class="m-row"><b>${t.cat}</b><span class="m-mins">${t.arrives}14:32</span></div><span class="m-muted">${t.job} · ${t.p1}</span></div>
+      </div>
+      ${tabbar(t.tabsC, ['home', 'bookmark', 'plus', 'archive', 'gear'], 0)}
+    </div></figure>
+    <figure class="phone"><div class="m-screen">
       <header class="m-head"><small>${t.job}</small><b>${t.quotes}</b></header>
       <div class="m-body">${quoteCard(t.p1, 320, 15, '14:32', true, true)}${quoteCard(t.p2, 380, 40, '15:05', false, false)}</div>
-      ${tabbar(t.tabsC, ['home', 'archive', 'plus', 'bookmark', 'gear'], 0)}
+      ${tabbar(t.tabsC, ['home', 'bookmark', 'plus', 'archive', 'gear'], 0)}
     </div></figure>
     <figure class="phone"><div class="m-screen m-full">
       ${tripMap}

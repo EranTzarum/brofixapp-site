@@ -330,3 +330,12 @@ footer.site .legal-line { margin: var(--s5) 0 0; padding-top: var(--s3); border-
 .m-tabs .m-fab { display: grid; place-items: center; width: 46px; height: 46px; margin-top: -24px; border-radius: 50%; background: #F9BA0B; color: #2B1C0B; box-shadow: 0 0 0 4px #fff; }
 .m-tabs .m-fab svg { width: 24px; height: 24px; stroke-width: 2.5; }
 .m-screen .m-map { stroke: none; }
+.m-tabs .m-fab { width: 52px; height: 52px; margin-top: -26px; border-radius: 0; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Cpath%20d%3D%22M24%205H13L3%2024l10%2019h11z%22%20fill%3D%22%23F9BA0B%22%20stroke%3D%22%23F9BA0B%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M24%205h11l10%2019-10%2019H24z%22%20fill%3D%22%23E0930D%22%20stroke%3D%22%23E0930D%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") center / contain no-repeat; box-shadow: none; filter: drop-shadow(0 4px 6px rgba(63, 41, 19, .25)); color: #3F2913; }
+.m-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.m-cats span { display: grid; justify-items: center; gap: 4px; padding: 8px 2px; border-radius: 14px; background: #fff; font-size: .625rem; font-weight: 600; }
+.m-cats i { display: grid; place-items: center; width: 34px; height: 34px; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Cpath%20d%3D%22M24%205H13L3%2024l10%2019h11z%22%20fill%3D%22%23F9BA0B%22%20stroke%3D%22%23F9BA0B%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M24%205h11l10%2019-10%2019H24z%22%20fill%3D%22%23E0930D%22%20stroke%3D%22%23E0930D%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") center / contain no-repeat; }
+.m-cats svg { width: 17px; height: 17px; stroke: #3F2913; stroke-width: 2.1; }
+.m-group { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+.m-group span { padding: 0 7px; border-radius: 999px; background: #F9BA0B; color: #2B1C0B; font-size: .6875rem; }
+.m-card.live { border: 2px solid #F9BA0B; }
+.m-tabs > span.on i { background: rgba(249, 186, 11, .25); }
