@@ -1,13 +1,13 @@
 # Media Generation Commands
 
-This document records the commands used to generate media assets for BroFix (`ticket 05`).
+This document records the commands used to generate media assets for Brofix (`ticket 05`).
 
 ## 1. Teaser Video & Poster
 
 ### Video Encoding
 Encode H.264 at max 720p on long side keeping aspect ratio, preset slow, CRF 24 (file size <= 5 MB), yuv420p, AAC 96k audio, faststart enabled:
 ```bash
-ffmpeg -y -i "C:/Users/tzaru/Documents/BroFix/references/founders material/סרטון טיזר קצר.mp4" \
+ffmpeg -y -i "C:/Users/tzaru/Documents/Brofix/references/founders material/סרטון טיזר קצר.mp4" \
   -vf "scale='if(gt(iw,ih),720,-2)':'if(gt(iw,ih),-2,720)'" \
   -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p \
   -c:a aac -b:a 96k -movflags +faststart \
@@ -42,7 +42,7 @@ writeFileSync('static/assets/media/teaser.json', JSON.stringify(data, null, 2) +
 
 ## 2. OpenGraph Share Images (1200x630)
 
-Generate self-contained SVG templates with embedded Rubik fonts, BroFix wordmark, wrench mark, headlines, and domain, then render to 1200x630 PNG via headless Edge:
+Generate self-contained SVG templates with embedded Rubik fonts, Brofix wordmark, wrench mark, headlines, and domain, then render to 1200x630 PNG via headless Edge:
 ```bash
 node scripts/og/generate.mjs
 ```

@@ -96,14 +96,14 @@ function makeSvg({ lang, dir, headline, subline }) {
   <g transform="translate(910, 490)">
     <rect x="0" y="0" width="190" height="48" rx="24" fill="#F9BA0B"/>
     <circle cx="165" cy="24" r="7" fill="#3F2913"/>
-    <text x="85" y="33" text-anchor="middle" class="badge-text">BroFix</text>
+    <text x="85" y="33" text-anchor="middle" class="badge-text">Brofix</text>
   </g>
   <text x="880" y="524" text-anchor="end" class="domain">brofixapp.com</text>
   ` : `
   <g transform="translate(100, 490)">
     <rect x="0" y="0" width="190" height="48" rx="24" fill="#F9BA0B"/>
     <circle cx="25" cy="24" r="7" fill="#3F2913"/>
-    <text x="105" y="33" text-anchor="middle" class="badge-text">BroFix</text>
+    <text x="105" y="33" text-anchor="middle" class="badge-text">Brofix</text>
   </g>
   <text x="315" y="524" text-anchor="start" class="domain">brofixapp.com</text>
   `}

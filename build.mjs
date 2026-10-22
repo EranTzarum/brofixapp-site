@@ -35,7 +35,7 @@ for (const lang of ['he', 'en']) {
 // GitHub Pages serves 404.html for any missing path; links back to the home pages.
 writeFileSync(join(DIST, '404.html'), layout({
   t: i18n.he, other: i18n.en, page: 'index', navPages: NAV, footerPages: FOOTER,
-  meta: { title: 'BroFix · הדף לא נמצא', description: 'הדף לא נמצא / Page not found', robots: 'noindex' },
+  meta: { title: 'Brofix · הדף לא נמצא', description: 'הדף לא נמצא / Page not found', robots: 'noindex' },
   body: `<section class="section"><div class="container prose">
   <h1>הדף לא נמצא</h1>
   <p class="lead" lang="en" dir="ltr">Page not found</p>

@@ -49,7 +49,7 @@ export function layout({ t, other, page, meta, body, navPages, footerPages }) {
 <a class="skip" href="#main">${t.skip}</a>
 <header class="site">
   <div class="container bar">
-    <a class="brand" href="${pageUrl(t.lang, 'index')}"><img src="/assets/brofix-wordmark.svg" alt="BroFix" width="94" height="32"></a>
+    <a class="brand" href="${pageUrl(t.lang, 'index')}"><img src="/assets/brofix-wordmark.svg" alt="Brofix" width="94" height="32"></a>
     <div class="tools">
       <a class="lang" href="${there}" hreflang="${other.lang}" lang="${other.lang}">${t.switchTo}</a>
       <button class="icon-btn theme" type="button" aria-label="${esc(t.themeToggle)}" title="${esc(t.themeToggle)}">${SUN}${MOON}</button>
@@ -64,7 +64,7 @@ ${body}</main>
   <div class="container">
     <div class="cols">
       <div>
-        <p class="name">BroFix</p>
+        <p class="name">Brofix</p>
         <a class="mail" href="mailto:brofixapp@gmail.com">brofixapp@gmail.com</a>
       </div>
       <ul>${links}<li><a href="${there}" hreflang="${other.lang}" lang="${other.lang}">${t.switchTo}</a></li></ul>
