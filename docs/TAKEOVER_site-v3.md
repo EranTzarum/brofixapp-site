@@ -13,6 +13,7 @@ Public site for the Brofix app: the legal pages Google OAuth and the Play/App St
 
 ## Where we stopped
 Site is live and complete. 2026-10-22: Eran decided the drawn app screens stay; no real screenshots needed.
+Pros lead form live on /pros#join (Web3Forms, key in `build.mjs` FORM_KEY, leads to brofixapp@gmail.com). Privacy policy covers it (commit ad3fe32), 12-month retention enforced by the Apps Script in `docs/gmail-lead-retention.gs`, installed on brofixapp@gmail.com with a daily trigger. App-side sync of the policy is with the builder session (after its PR #47).
 
 ## Next steps
 1. Store links: swap the "בקרוב" spans for links in `src/pages/*/index.html` and `pros.html` once Play / App Store URLs exist.
