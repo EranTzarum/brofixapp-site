@@ -24,7 +24,8 @@ for (const lang of ['he', 'en']) {
     const src = readFileSync(join(ROOT, 'src/pages', lang, file), 'utf8');
     const m = src.match(/^<!--meta (.*?) -->\n/);
     if (!m) throw new Error(`${lang}/${file}: missing <!--meta {...} --> first line`);
-    const html = layout({ t: i18n[lang], other, page, meta: JSON.parse(m[1]), body: src.slice(m[0].length), navPages: NAV, footerPages: FOOTER });
+    const body = src.slice(m[0].length).replace('<!--app-screens-->', () => readFileSync(join(ROOT, `src/partials/appscreens.${lang}.html`), 'utf8'));
+    const html = layout({ t: i18n[lang], other, page, meta: JSON.parse(m[1]), body, navPages: NAV, footerPages: FOOTER });
     const out = join(DIST, lang === 'he' ? '' : 'en', file);
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, html);
@@ -54,7 +55,6 @@ Allow: /
 Sitemap: ${SITE}/sitemap.xml
 `);
 
-// Old URL already handed to the app builder.
-writeFileSync(join(DIST, 'privacy-en.html'),
-  '<!doctype html><meta charset="utf-8"><title>Redirecting</title><link rel="canonical" href="https://brofixapp.com/en/privacy"><meta http-equiv="refresh" content="0; url=/en/privacy"><a href="/en/privacy">Privacy policy</a>\n');
+// /privacy-en is in the store declarations: serve the full English policy there too (canonical stays /en/privacy).
+cpSync(join(DIST, 'en/privacy.html'), join(DIST, 'privacy-en.html'));
 console.log('built', DIST);

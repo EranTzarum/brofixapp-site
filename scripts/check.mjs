@@ -22,7 +22,7 @@ function resolves(url) {
 for (const file of pages) {
   const rel = file.slice(DIST.length + 1).replace(/\\/g, '/');
   const html = readFileSync(file, 'utf8');
-  if (rel === 'privacy-en.html') continue; // redirect stub
+  if (rel === 'privacy-en.html') continue; // copy of en/privacy.html
   for (const [, url] of html.matchAll(/(?:href|src)="(\/[^"]*)"/g)) {
     if (!resolves(url)) errors.push(`${rel}: broken link ${url}`);
   }
