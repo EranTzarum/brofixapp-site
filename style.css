@@ -48,3 +48,7 @@ th { color: var(--muted); font-weight: 600; }
 a { color: var(--accent-ink); }
 .mail { font-weight: 600; direction: ltr; unicode-bidi: embed; }
 footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+@font-face { font-family: "Rubik"; font-weight: 400; font-style: normal; font-display: swap; src: url("/assets/fonts/Rubik_400Regular.ttf") format("truetype"); }
+@font-face { font-family: "Rubik"; font-weight: 700; font-style: normal; font-display: swap; src: url("/assets/fonts/Rubik_700Bold.ttf") format("truetype"); }
+.brand img { display: block; height: 36px; width: auto; }
+@media (prefers-color-scheme: dark) { .brand img { background: #fff; border-radius: 10px; padding: 4px 10px; } }
