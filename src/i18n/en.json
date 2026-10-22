@@ -1,0 +1,8 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "nav": { "index": "Home", "privacy": "Privacy policy", "delete-account": "Delete account" },
+  "switchTo": "עברית",
+  "themeToggle": "Toggle light/dark mode",
+  "footer": "BroFix · All rights reserved"
+}

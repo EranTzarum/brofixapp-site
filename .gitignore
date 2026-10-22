@@ -1,0 +1,7 @@
+dist/
+.crew/
+.scratch/
+.claude-flow/
+.swarm/
+.hive-mind/
+.claude/settings.local.json
