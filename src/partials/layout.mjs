@@ -61,15 +61,10 @@ export function layout({ t, other, page, meta, body, navPages, footerPages }) {
 <main id="main">
 ${body}</main>
 <footer class="site">
-  <div class="container">
-    <div class="cols">
-      <div>
-        <p class="name">Brofix</p>
-        <a class="mail" href="mailto:brofixapp@gmail.com">brofixapp@gmail.com</a>
-      </div>
-      <ul>${links}<li><a href="${there}" hreflang="${other.lang}" lang="${other.lang}">${t.switchTo}</a></li></ul>
-    </div>
-    <p class="legal-line">${t.footer}</p>
+  <div class="container foot">
+    <p class="name">Brofix</p>
+    <ul>${links}<li><a href="${there}" hreflang="${other.lang}" lang="${other.lang}">${t.switchTo}</a></li></ul>
+    <a class="write" href="mailto:brofixapp@gmail.com">${t.writeUs}</a>
   </div>
 </footer>
 <script>
@@ -80,6 +75,15 @@ document.querySelector('.theme').addEventListener('click',function(){
 document.querySelector('.menu-btn').addEventListener('click',function(){
   var h=document.querySelector('header.site'),o=h.classList.toggle('open');this.setAttribute('aria-expanded',o);
 });
+// scroll reveal: hidden state lives in CSS under html.js; reveal once when a block enters the viewport
+(function(){
+  var els=document.querySelectorAll('main > .section > .container > :not(.steps):not(.stickers), .steps > li, .stickers > li');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.setProperty('--d',Math.min(i,7)*60+'ms');io.observe(e)});
+})();
+// hero map: hold the pro dot still for reduced motion
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('svg.map').forEach(function(m){m.pauseAnimations();m.setCurrentTime(6)});
 </script>
 </body>
 </html>

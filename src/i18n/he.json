@@ -1,10 +1,16 @@
 {
   "lang": "he",
   "dir": "rtl",
-  "nav": { "index": "ראשי", "pros": "לבעלי מקצוע", "privacy": "מדיניות פרטיות", "delete-account": "מחיקת חשבון", "accessibility": "הצהרת נגישות" },
+  "nav": {
+    "index": "ראשי",
+    "pros": "לבעלי מקצוע",
+    "privacy": "מדיניות פרטיות",
+    "delete-account": "מחיקת חשבון",
+    "accessibility": "הצהרת נגישות"
+  },
   "switchTo": "English",
   "themeToggle": "החלפת מצב בהיר/כהה",
   "menu": "תפריט",
   "skip": "דילוג לתוכן",
-  "footer": "Brofix · כל הזכויות שמורות"
+  "writeUs": "כתבו לנו"
 }

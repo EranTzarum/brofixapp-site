@@ -1,10 +1,16 @@
 {
   "lang": "en",
   "dir": "ltr",
-  "nav": { "index": "Home", "pros": "For pros", "privacy": "Privacy policy", "delete-account": "Delete account", "accessibility": "Accessibility" },
+  "nav": {
+    "index": "Home",
+    "pros": "For pros",
+    "privacy": "Privacy policy",
+    "delete-account": "Delete account",
+    "accessibility": "Accessibility"
+  },
   "switchTo": "עברית",
   "themeToggle": "Toggle light/dark mode",
   "menu": "Menu",
   "skip": "Skip to content",
-  "footer": "Brofix · All rights reserved"
+  "writeUs": "Write to us"
 }

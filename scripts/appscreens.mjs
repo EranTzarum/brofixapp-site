@@ -143,7 +143,7 @@ function screens(t) {
       </div>
       ${tabbar(t.tabsP, ['map', 'tag', 'tools', 'gear'], 0)}
     </div></figure>`;
-  return `<section class="section" id="app">
+  return `<section class="section band" id="app">
   <div class="container">
     <div class="section-head"><h2>${t.title}</h2><p>${t.sub}</p></div>
     <div class="roles" data-role="customer">
