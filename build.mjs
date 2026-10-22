@@ -9,7 +9,7 @@ const DIST = join(ROOT, 'dist');
 const NAV = ['index', 'pros', 'privacy', 'delete-account'];
 const FOOTER = ['pros', 'privacy', 'delete-account', 'accessibility'];
 // Web3Forms access key for the /pros lead form. Public by design (it only lets a form send to our inbox).
-const FORM_KEY = '';
+const FORM_KEY = '1e3d8a1e-ec37-4b03-9094-e55b49b7bfdf';
 const i18n = {
   he: JSON.parse(readFileSync(join(ROOT, 'src/i18n/he.json'), 'utf8')),
   en: JSON.parse(readFileSync(join(ROOT, 'src/i18n/en.json'), 'utf8')),
