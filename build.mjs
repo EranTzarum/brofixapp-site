@@ -8,6 +8,8 @@ const ROOT = dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1')
 const DIST = join(ROOT, 'dist');
 const NAV = ['index', 'pros', 'privacy', 'delete-account'];
 const FOOTER = ['pros', 'privacy', 'delete-account', 'accessibility'];
+// Web3Forms access key for the /pros lead form. Public by design (it only lets a form send to our inbox).
+const FORM_KEY = '';
 const i18n = {
   he: JSON.parse(readFileSync(join(ROOT, 'src/i18n/he.json'), 'utf8')),
   en: JSON.parse(readFileSync(join(ROOT, 'src/i18n/en.json'), 'utf8')),
@@ -24,7 +26,7 @@ for (const lang of ['he', 'en']) {
     const src = readFileSync(join(ROOT, 'src/pages', lang, file), 'utf8');
     const m = src.match(/^<!--meta (.*?) -->\n/);
     if (!m) throw new Error(`${lang}/${file}: missing <!--meta {...} --> first line`);
-    const body = src.slice(m[0].length).replace('<!--app-screens-->', () => readFileSync(join(ROOT, `src/partials/appscreens.${lang}.html`), 'utf8'));
+    const body = src.slice(m[0].length).replace('<!--app-screens-->', () => readFileSync(join(ROOT, `src/partials/appscreens.${lang}.html`), 'utf8')).replaceAll('%FORM_KEY%', FORM_KEY);
     const html = layout({ t: i18n[lang], other, page, meta: JSON.parse(m[1]), body, navPages: NAV, footerPages: FOOTER });
     const out = join(DIST, lang === 'he' ? '' : 'en', file);
     mkdirSync(dirname(out), { recursive: true });

@@ -113,13 +113,22 @@
     <div class="prose">
       <h2>הצטרפות לפיילוט</h2>
       <p>אנחנו מצרפים כעת בעלי מקצוע עצמאיים לפיילוט הסגור של Brofix ב-Android וב-iPhone (דרך Google Play ו-TestFlight).</p>
-      <p>רוצים לקבל הזמנה להורדה או לשאול שאלה? שלחו לנו מייל קצר עם השם שלכם, תחום העיסוק וערי השירות שבהן אתם עובדים, ונחזור אליכם.</p>
+      <p>רוצים לקבל הזמנה להורדה או לשאול שאלה? השאירו שם וטלפון או מייל, ונחזור אליכם.</p>
+      <p>אפשר גם לכתוב לנו ישירות: <a class="mail" href="mailto:brofixapp@gmail.com">brofixapp@gmail.com</a></p>
     </div>
-    <div class="card">
-      <h3>דברו איתנו</h3>
-      <p>כתבו לנו ישירות לכתובת:</p>
-      <p><a class="mail" href="mailto:brofixapp@gmail.com">brofixapp@gmail.com</a></p>
-      <p class="meta">נשמח לצרף אתכם לפיילוט ולשמוע מכם משוב מהשטח.</p>
-    </div>
+    <form class="card lead-form" id="lead" action="https://api.web3forms.com/submit" method="POST" data-need="השאירו טלפון או מייל (לפחות אחד מהם)." data-ok="תודה! קיבלנו את הפרטים ונחזור אליכם בקרוב." data-fail="השליחה לא הצליחה. נסו שוב או כתבו לנו ל-brofixapp@gmail.com.">
+      <h3>השאירו פרטים ונחזור אליכם</h3>
+      <input type="hidden" name="access_key" value="%FORM_KEY%">
+      <input type="hidden" name="subject" value="בעל מקצוע חדש מהאתר">
+      <input type="hidden" name="from_name" value="brofixapp.com">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label>שם<input name="name" required autocomplete="name" maxlength="80"></label>
+      <label>טלפון<input name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" pattern="[0-9+\-\s\(\)]{9,20}"></label>
+      <label>מייל<input name="email" type="email" autocomplete="email" dir="ltr" maxlength="120"></label>
+      <p class="meta">טלפון או מייל, לפחות אחד מהם.</p>
+      <button class="btn" type="submit">שליחה</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+      <p class="meta">הפרטים נשלחים אלינו במייל דרך שירות Web3Forms ומשמשים רק כדי לחזור אליכם בנוגע לפיילוט. למחיקתם כתבו ל-brofixapp@gmail.com.</p>
+    </form>
   </div>
 </section>

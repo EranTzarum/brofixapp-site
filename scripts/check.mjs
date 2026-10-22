@@ -30,6 +30,7 @@ for (const file of pages) {
   for (const [m] of text.matchAll(/\[[^\]\n]{2,60}\]/g)) errors.push(`${rel}: placeholder ${m}`);
   if (html.includes('צרום')) errors.push(`${rel}: misspelled name צרום (correct: צארום)`);
   if (html.includes('BroFix')) errors.push(`${rel}: brand is spelled Brofix (lowercase f)`);
+  if (html.includes('name="access_key" value=""')) errors.push(`${rel}: lead form has no Web3Forms key (FORM_KEY in build.mjs)`);
   if (!/<html lang="(he|en)" dir="(rtl|ltr)">/.test(html)) errors.push(`${rel}: missing lang/dir`);
   if (!html.includes('hreflang="he"') || !html.includes('hreflang="en"')) errors.push(`${rel}: missing hreflang pair`);
   if (rel === '404.html') continue;

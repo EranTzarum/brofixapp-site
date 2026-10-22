@@ -113,13 +113,23 @@
     <div class="prose">
       <h2>Join the pilot</h2>
       <p>We are onboarding independent professionals in Israel for the closed Brofix pilot on Android and iPhone (via Google Play internal testing and TestFlight).</p>
-      <p>Want an invite link or have a question? Send us a short email with your name, trade, and the cities you cover, and we will get back to you.</p>
-    </div>
-    <div class="card">
-      <h3>Get in touch</h3>
-      <p>Email us directly at:</p>
-      <p><a class="mail" href="mailto:brofixapp@gmail.com">brofixapp@gmail.com</a></p>
+      <p>Want an invite link or have a question? Leave your name and a phone number or email, and we will get back to you.</p>
+      <p>Or email us directly: <a class="mail" href="mailto:brofixapp@gmail.com">brofixapp@gmail.com</a></p>
       <p class="meta">Note: the app interface in the pilot is in Hebrew.</p>
     </div>
+    <form class="card lead-form" id="lead" action="https://api.web3forms.com/submit" method="POST" data-need="Leave a phone number or an email (at least one)." data-ok="Thanks! We got your details and will get back to you soon." data-fail="Sending failed. Try again or email us at brofixapp@gmail.com.">
+      <h3>Leave your details</h3>
+      <input type="hidden" name="access_key" value="%FORM_KEY%">
+      <input type="hidden" name="subject" value="New pro from the site (English)">
+      <input type="hidden" name="from_name" value="brofixapp.com">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label>Name<input name="name" required autocomplete="name" maxlength="80"></label>
+      <label>Phone<input name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" maxlength="20" pattern="[0-9+\-\s\(\)]{9,20}"></label>
+      <label>Email<input name="email" type="email" autocomplete="email" dir="ltr" maxlength="120"></label>
+      <p class="meta">A phone number or an email, at least one.</p>
+      <button class="btn" type="submit">Send</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+      <p class="meta">Your details reach us by email through the Web3Forms service and are used only to contact you about the pilot. To have them deleted, email brofixapp@gmail.com.</p>
+    </form>
   </div>
 </section>

@@ -82,6 +82,21 @@ document.querySelector('.menu-btn').addEventListener('click',function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.setProperty('--d',Math.min(i,7)*60+'ms');io.observe(e)});
 })();
+// pros lead form: needs a phone or an email; sends with fetch and shows the result in place
+(function(){
+  var f=document.getElementById('lead');if(!f)return;
+  var ph=f.elements.phone,em=f.elements.email,st=f.querySelector('.form-status'),b=f.querySelector('button');
+  function need(){ph.setCustomValidity(ph.value.trim()||em.value.trim()?'':f.dataset.need)}
+  need();ph.addEventListener('input',need);em.addEventListener('input',need);
+  f.addEventListener('submit',function(e){
+    e.preventDefault();b.disabled=true;st.textContent='';
+    fetch(f.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)})
+      .then(function(r){return r.json()})
+      .then(function(d){if(!d.success)throw 0;f.reset();need();st.textContent=f.dataset.ok})
+      .catch(function(){st.textContent=f.dataset.fail})
+      .finally(function(){b.disabled=false});
+  });
+})();
 // hero map: hold the pro dot still for reduced motion
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('svg.map').forEach(function(m){m.pauseAnimations();m.setCurrentTime(6)});
 </script>
