@@ -49,7 +49,7 @@ export function layout({ t, other, page, meta, body, navPages, footerPages }) {
 <a class="skip" href="#main">${t.skip}</a>
 <header class="site">
   <div class="container bar">
-    <a class="brand" href="${pageUrl(t.lang, 'index')}"><img src="/assets/brofix-wordmark.svg" alt="Brofix" width="94" height="32"></a>
+    <a class="brand" href="${pageUrl(t.lang, 'index')}"><img class="brand-wrench" src="/assets/brofix-wrench.svg" alt="" width="58" height="32"><img src="/assets/brofix-wordmark.svg" alt="Brofix" width="94" height="32"></a>
     <div class="tools">
       <a class="lang" href="${there}" hreflang="${other.lang}" lang="${other.lang}">${t.switchTo}</a>
       <button class="icon-btn theme" type="button" aria-label="${esc(t.themeToggle)}" title="${esc(t.themeToggle)}">${SUN}${MOON}</button>
@@ -62,7 +62,7 @@ export function layout({ t, other, page, meta, body, navPages, footerPages }) {
 ${body}</main>
 <footer class="site">
   <div class="container foot">
-    <p class="name">Brofix</p>
+    <p class="name"><img src="/assets/brofix-wrench.svg" alt="" width="40" height="22">Brofix</p>
     <ul>${links}<li><a href="${there}" hreflang="${other.lang}" lang="${other.lang}">${t.switchTo}</a></li></ul>
     <a class="write" href="mailto:brofixapp@gmail.com">${t.writeUs}</a>
   </div>
