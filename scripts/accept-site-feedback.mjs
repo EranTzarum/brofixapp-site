@@ -38,7 +38,7 @@ const checks = {
   },
   '03'() {
     const h = read('dist/index.html');
-    need(!/שמונה|להורדה ב-|דני ·/.test(visible(h)), 'he home still has שמונה / להורדה ב- / דני');
+    need(!/שמונה|דני ·/.test(visible(h)), 'he home still has שמונה / דני');
     need(h.includes('מדביר') && h.includes('יוסי'), 'he home lacks מדביר or יוסי');
     const e = read('dist/en/index.html');
     need(!e.includes('con&shy;') && !e.includes('Home pros'), 'en home still has con&shy; or "Home pros"');

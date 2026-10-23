@@ -66,17 +66,17 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --text: #F4F4F4; --muted: #BDBDBD; --bg: #111111; --surface: #1D1D1D; --shadow-c: #000000; --focus: #F9BA0B;
+    --text: #F4F4F4; --muted: #C2C2C2; --bg: #262626; --surface: #313131; --shadow-c: #141414; --focus: #F9BA0B;
     --map-land: #242424; --map-block: #303030; --map-road: #424242; --map-park: #2E3A22;
-    --sheet-bg: #1D1D1D; --sheet-fg: #F4F4F4; --sheet-muted: #BDBDBD;
+    --sheet-bg: #313131; --sheet-fg: #F4F4F4; --sheet-muted: #C2C2C2;
     --mark-opacity: .08;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --text: #F4F4F4; --muted: #BDBDBD; --bg: #111111; --surface: #1D1D1D; --shadow-c: #000000; --focus: #F9BA0B;
+  --text: #F4F4F4; --muted: #C2C2C2; --bg: #262626; --surface: #313131; --shadow-c: #141414; --focus: #F9BA0B;
   --map-land: #242424; --map-block: #303030; --map-road: #424242; --map-park: #2E3A22;
-  --sheet-bg: #1D1D1D; --sheet-fg: #F4F4F4; --sheet-muted: #BDBDBD;
+  --sheet-bg: #313131; --sheet-fg: #F4F4F4; --sheet-muted: #C2C2C2;
   --mark-opacity: .08;
   color-scheme: dark;
 }
@@ -133,12 +133,12 @@ strong { font-weight: 700; }
 /* ---------- Header ---------- */
 header.site { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 3px solid var(--text); }
 header.site .bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s4); min-height: 72px; padding-block: 8px; }
-.brand { display: flex; direction: ltr; align-items: center; gap: 4px; margin-inline-end: auto; border-radius: var(--r1); }
+.brand { display: flex; flex-direction: column; align-items: center; gap: 0; margin-inline-end: auto; border-radius: var(--r1); }
 .brand img { display: block; height: 34px; width: auto; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .brand { background: var(--cream); padding: 4px 10px; } }
 :root[data-theme="dark"] .brand { background: var(--cream); padding: 4px 10px; }
-.brand .brand-wrench { height: 32px; }
-@media (max-width: 479.98px) { .brand img { height: 26px; } .brand .brand-wrench { height: 24px; } }
+.brand .brand-wrench { height: 20px; margin-bottom: -2px; }
+@media (max-width: 479.98px) { .brand img { height: 26px; } .brand .brand-wrench { height: 17px; } }
 nav.primary { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 nav.primary a { color: var(--text); text-decoration: none; font-weight: 700; font-size: .95rem; padding-block: 6px; }
 nav.primary a:hover { box-shadow: inset 0 -4px 0 var(--amber-deep); }
