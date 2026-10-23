@@ -14,9 +14,13 @@
 
 /* pros teaser: the logo wrench grips a nut across two flats; as the band scrolls through,
    wrench and nut turn together about the nut centre, anticlockwise (loosening) */
-.nut-scene { display: block; width: min(380px, 86vw); height: auto; overflow: visible; justify-self: center; }
+.nut-scene { display: block; width: min(460px, 92vw); height: auto; overflow: visible; justify-self: center; }
+/* the speed lines are amber like the band: a dark outline (the logo's own line colour) keeps the whole logo visible */
+.nut-scene image { filter: drop-shadow(3px 0 0 #1C1C1C) drop-shadow(-3px 0 0 #1C1C1C) drop-shadow(0 3px 0 #1C1C1C) drop-shadow(0 -3px 0 #1C1C1C); }
+/* Hebrew reads right to left: the wrench faces the other way */
+[dir="rtl"] .nut-scene { transform: scaleX(-1); }
 .nut-scene .turn { transform-box: view-box; transform-origin: 900px 215px; rotate: 0deg; }
-@media (min-width: 900px) { .nut-scene { width: 420px; } }
+@media (min-width: 900px) { .nut-scene { width: 560px; } .section.amber:has(.nut-scene) .split { gap: 24px; } }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .nut-scene .turn { animation: loosen linear both; animation-timeline: view(); animation-range: entry 15% cover 65%; }
