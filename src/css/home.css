@@ -10,7 +10,9 @@
 
 
 /* faded logo wrench behind the hero text, like the share image */
-.hero img.mark.home-mark { inset-inline-end: auto; inset-inline-start: -4%; top: 6%; bottom: auto; width: clamp(300px, 52vw, 720px); opacity: .16; }
+.hero img.mark.home-mark { inset: 50% auto auto 50%; translate: -50% -50%; width: min(1050px, 78vw); max-width: none; opacity: .14;
+  filter: drop-shadow(5px 0 0 #1C1C1C) drop-shadow(-5px 0 0 #1C1C1C) drop-shadow(0 5px 0 #1C1C1C) drop-shadow(0 -5px 0 #1C1C1C); }
+[dir="rtl"] .hero img.mark.home-mark { transform: scaleX(-1); }
 
 /* pros teaser: the logo wrench grips a nut across two flats; as the band scrolls through,
    wrench and nut turn together about the nut centre, anticlockwise (loosening) */
