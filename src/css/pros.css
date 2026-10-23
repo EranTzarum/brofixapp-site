@@ -49,3 +49,6 @@
 .lead-form select:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 .lead-form .pair { display: grid; gap: var(--s3); }
 @media (min-width: 768px) { .lead-form .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* fields in the two-column rows must shrink with their column (inputs default to ~20ch) */
+.lead-form label { min-width: 0; }
+.lead-form input { width: 100%; min-width: 0; }
