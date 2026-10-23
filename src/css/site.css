@@ -138,6 +138,7 @@ header.site .bar { display: flex; flex-wrap: wrap; align-items: center; gap: var
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .brand { background: var(--cream); padding: 4px 10px; } }
 :root[data-theme="dark"] .brand { background: var(--cream); padding: 4px 10px; }
 .brand .brand-wrench { height: 32px; }
+@media (max-width: 479.98px) { .brand img { height: 26px; } .brand .brand-wrench { height: 24px; } }
 nav.primary { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 nav.primary a { color: var(--text); text-decoration: none; font-weight: 700; font-size: .95rem; padding-block: 6px; }
 nav.primary a:hover { box-shadow: inset 0 -4px 0 var(--amber-deep); }
