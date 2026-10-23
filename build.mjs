@@ -10,6 +10,14 @@ const NAV = ['index', 'pros', 'privacy', 'delete-account'];
 const FOOTER = ['pros', 'privacy', 'delete-account', 'accessibility'];
 // Web3Forms access key for the /pros lead form. Public by design (it only lets a form send to our inbox).
 const FORM_KEY = '1e3d8a1e-ec37-4b03-9094-e55b49b7bfdf';
+// WhatsApp number for the /pros chat button, digits only with country code (e.g. 972501234567).
+// Empty: every <!--wa:start-->...<!--wa:end--> block is left out of the page.
+const WA_NUMBER = '';
+const withWa = (html) => WA_NUMBER
+  ? html.replace(/<!--wa:(start|end)-->/g, '').replaceAll('%WA_NUMBER%', WA_NUMBER)
+  : html.replace(/<!--wa:start-->[\s\S]*?<!--wa:end-->/g, '');
+// style.css = shared rules, then page-specific files (kept apart so page work never collides).
+const CSS = ['site.css', 'home.css', 'pros.css'];
 const i18n = {
   he: JSON.parse(readFileSync(join(ROOT, 'src/i18n/he.json'), 'utf8')),
   en: JSON.parse(readFileSync(join(ROOT, 'src/i18n/en.json'), 'utf8')),
@@ -17,7 +25,7 @@ const i18n = {
 
 rmSync(DIST, { recursive: true, force: true });
 cpSync(join(ROOT, 'static'), DIST, { recursive: true });
-cpSync(join(ROOT, 'src/css/site.css'), join(DIST, 'style.css'));
+writeFileSync(join(DIST, 'style.css'), CSS.map((f) => readFileSync(join(ROOT, 'src/css', f), 'utf8')).join('\n'));
 
 for (const lang of ['he', 'en']) {
   const other = i18n[lang === 'he' ? 'en' : 'he'];
@@ -26,7 +34,8 @@ for (const lang of ['he', 'en']) {
     const src = readFileSync(join(ROOT, 'src/pages', lang, file), 'utf8');
     const m = src.match(/^<!--meta (.*?) -->\n/);
     if (!m) throw new Error(`${lang}/${file}: missing <!--meta {...} --> first line`);
-    const body = src.slice(m[0].length).replace('<!--app-screens-->', () => readFileSync(join(ROOT, `src/partials/appscreens.${lang}.html`), 'utf8')).replaceAll('%FORM_KEY%', FORM_KEY);
+    const raw = src.slice(m[0].length).replace('<!--app-screens-->', () => readFileSync(join(ROOT, `src/partials/appscreens.${lang}.html`), 'utf8')).replaceAll('%FORM_KEY%', FORM_KEY);
+    const body = withWa(raw);
     const html = layout({ t: i18n[lang], other, page, meta: JSON.parse(m[1]), body, navPages: NAV, footerPages: FOOTER });
     const out = join(DIST, lang === 'he' ? '' : 'en', file);
     mkdirSync(dirname(out), { recursive: true });
