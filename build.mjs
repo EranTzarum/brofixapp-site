@@ -7,7 +7,7 @@ import { layout, pageUrl, SITE } from './src/partials/layout.mjs';
 const ROOT = dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1'));
 const DIST = join(ROOT, 'dist');
 const NAV = ['index', 'pros', 'privacy', 'delete-account'];
-const FOOTER = ['pros', 'privacy', 'delete-account', 'accessibility'];
+const FOOTER = ['pros', 'privacy', 'terms', 'delete-account', 'accessibility'];
 // Web3Forms access key for the /pros lead form. Public by design (it only lets a form send to our inbox).
 const FORM_KEY = '1e3d8a1e-ec37-4b03-9094-e55b49b7bfdf';
 // WhatsApp number for the /pros chat button, digits only with country code (e.g. 972501234567).
