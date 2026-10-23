@@ -1,1 +1,51 @@
 /* /pros page rules (src/pages/*/pros.html). Appended after site.css. */
+
+/* tighter bands on phones (the page is mostly opened from WhatsApp) */
+@media (max-width: 639.98px) {
+  main:has(.pros-hero) > .section { padding-block: 44px; }
+  main:has(.pros-hero) .section-head { margin-bottom: var(--s5); }
+}
+
+/* hero CTAs: WhatsApp first; "leave details" turns solid when it is the only one (empty WA number) */
+.pros-hero .actions { margin-top: var(--s4); }
+.hero .btn-wa { background: #25D366; color: var(--brown); box-shadow: -5px 5px 0 var(--brown); }
+.btn-wa svg { width: 22px; height: 22px; flex: none; fill: currentColor; }
+.pros-hero .btn-ghost:only-child { background: var(--brown); color: var(--cream); border-color: var(--brown); box-shadow: -5px 5px 0 var(--amber-deep); }
+@media (max-width: 479.98px) { .pros-hero .actions .btn { flex: 1 1 100%; } }
+
+/* store badges stay, but quieter than the CTAs */
+.pros-hero .store-badges { gap: 10px; margin-top: var(--s5); }
+.pros-hero .store-badges > span { min-width: 0; min-height: 44px; padding: 4px 14px; gap: 8px; background: transparent; color: var(--brown); border: 2px solid var(--brown); }
+.pros-hero .store-badges svg { width: 18px; height: 18px; }
+.pros-hero .store-badges strong { font-size: .95rem; }
+
+/* benefit strip: dark-brown band with three hex nuts */
+.section.perks-band { padding-block: var(--s5); }
+.perks { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); }
+.perks > li { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: var(--s3); align-items: start; }
+.perks > li::before { content: ""; grid-row: 1 / span 2; width: 52px; height: 52px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,3 9,26.5 9,73.5 50,97' fill='%23F9BA0B'/%3E%3Cpolygon points='50,3 91,26.5 91,73.5 50,97' fill='%23E0930D'/%3E%3Ccircle cx='50' cy='50' r='17' fill='%233F2913'/%3E%3C/svg%3E") center / contain no-repeat; }
+.perks h3 { margin: 4px 0 2px; }
+.perks p { margin: 0; color: var(--muted); }
+@media (min-width: 900px) { .perks { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* trades: 12 stickers wrap (the home rule puts them on one row on wide screens) */
+#trades .stickers { flex-wrap: wrap; justify-content: center; max-width: 900px; margin-inline: auto; }
+.more-trades { margin-top: var(--s6); }
+.more-trades summary { display: inline-flex; align-items: center; gap: var(--s2); min-height: 48px; padding: 0 var(--s4); border: 3px solid var(--text); border-radius: 999px; font-weight: 700; cursor: pointer; list-style: none; }
+.more-trades summary::-webkit-details-marker { display: none; }
+.more-trades summary::after { content: "+"; font-size: 1.25rem; line-height: 1; }
+.more-trades[open] summary::after { content: "\2212"; }
+.more-trades summary:hover { background: var(--amber); color: var(--brown); border-color: var(--brown); }
+.more-trades ul { list-style: none; margin: var(--s4) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.more-trades li { padding: 6px 14px; border: 2px solid var(--text); border-radius: 999px; background: var(--bg); font-weight: 700; font-size: .9375rem; }
+
+/* license callout */
+.card.license { max-width: 68ch; margin-top: var(--s6); box-shadow: -6px 6px 0 var(--amber-deep); }
+.license h3 { display: flex; align-items: center; gap: 12px; }
+.license h3::before { content: ""; flex: none; width: 1.4em; height: 1.4em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,3 9,26.5 9,73.5 50,97' fill='%23F9BA0B'/%3E%3Cpolygon points='50,3 91,26.5 91,73.5 50,97' fill='%23E0930D'/%3E%3Cpolygon points='50,3 91,26.5 91,73.5 50,97 9,73.5 9,26.5' fill='none' stroke='%233F2913' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+
+/* join form: trade select matches the inputs; name|phone and trade|city side by side on wider screens */
+.lead-form select { width: 100%; min-width: 0; min-height: 52px; padding: 0 var(--s3); border: 3px solid var(--text); border-radius: var(--r2); background: var(--bg); color: var(--text); font: inherit; font-weight: 400; }
+.lead-form select:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+.lead-form .pair { display: grid; gap: var(--s3); }
+@media (min-width: 768px) { .lead-form .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
