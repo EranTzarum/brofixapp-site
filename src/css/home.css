@@ -12,16 +12,15 @@
 /* faded logo wrench behind the hero text, like the share image */
 .hero img.mark.home-mark { inset-inline-end: auto; inset-inline-start: -4%; top: 6%; bottom: auto; width: clamp(300px, 52vw, 720px); opacity: .16; }
 
-/* pros teaser: the logo wrench sits on the big nut and turns it as the band scrolls through */
-.nut-turn { position: relative; width: min(200px, 44vw); justify-self: center; }
-.nut-turn .bignut { width: 100%; rotate: -12deg; }
-.nut-turn .nut-wrench { position: absolute; width: 110%; max-width: none; left: -36%; top: 22%; rotate: 70deg; transform-origin: 78% 46%; pointer-events: none; filter: drop-shadow(-4px 4px 0 rgba(0,0,0,.2)); }
-@media (min-width: 900px) { .nut-turn { width: 240px; } }
+/* pros teaser: the logo wrench grips a nut across two flats; as the band scrolls through,
+   wrench and nut turn together about the nut centre, anticlockwise (loosening) */
+.nut-scene { display: block; width: min(380px, 86vw); height: auto; overflow: visible; justify-self: center; }
+.nut-scene .turn { transform-box: view-box; transform-origin: 900px 215px; rotate: 0deg; }
+@media (min-width: 900px) { .nut-scene { width: 420px; } }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .nut-turn .bignut { animation: nut-spin linear both; animation-timeline: view(); animation-range: entry 10% cover 60%; }
-    .nut-turn .nut-wrench { animation: wrench-spin linear both; animation-timeline: view(); animation-range: entry 10% cover 60%; }
+    .nut-scene .turn { animation: loosen linear both; animation-timeline: view(); animation-range: entry 15% cover 65%; }
   }
 }
-@keyframes nut-spin { from { rotate: -42deg; } to { rotate: -2deg; } }
-@keyframes wrench-spin { from { rotate: 40deg; } to { rotate: 80deg; } }
+@keyframes loosen { from { rotate: 18deg; } to { rotate: -22deg; } }
+.section.amber:has(.nut-scene) { overflow: clip; }

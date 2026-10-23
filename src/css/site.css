@@ -133,10 +133,10 @@ strong { font-weight: 700; }
 /* ---------- Header ---------- */
 header.site { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 3px solid var(--text); }
 header.site .bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s4); min-height: 72px; padding-block: 8px; }
-.brand { display: flex; flex-direction: column; align-items: center; gap: 0; margin-inline-end: auto; border-radius: var(--r1); }
+.brand { display: flex; flex-direction: column; align-items: center; gap: 0; margin-inline-end: auto; padding: 4px 10px; border-radius: var(--r1); }
 .brand img { display: block; height: 34px; width: auto; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .brand { background: var(--cream); padding: 4px 10px; } }
-:root[data-theme="dark"] .brand { background: var(--cream); padding: 4px 10px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .brand { background: var(--cream); } }
+:root[data-theme="dark"] .brand { background: var(--cream); }
 .brand .brand-wrench { height: 20px; margin-bottom: -2px; }
 @media (max-width: 479.98px) { .brand img { height: 26px; } .brand .brand-wrench { height: 17px; } }
 nav.primary { display: flex; flex-wrap: wrap; gap: 4px 18px; }
@@ -170,8 +170,6 @@ nav.primary a[aria-current="page"] { box-shadow: inset 0 -4px 0 var(--amber); }
 /* ---------- Footer ---------- */
 footer.site { border-top: 3px solid var(--text); padding-block: 28px; font-size: .95rem; }
 footer.site .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
-footer.site .name { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-weight: 700; font-size: 1.3rem; margin-inline-end: auto; }
-footer.site .name img { width: 40px; height: auto; }
 footer.site ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
 footer.site ul a { color: var(--text); }
 footer.site .write { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid var(--text); border-radius: 999px; background: var(--amber); color: var(--brown); font-weight: 700; text-decoration: none; }

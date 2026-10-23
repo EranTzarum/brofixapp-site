@@ -62,7 +62,7 @@ export function layout({ t, other, page, meta, body, navPages, footerPages }) {
 ${body}</main>
 <footer class="site">
   <div class="container foot">
-    <p class="name"><img src="/assets/brofix-wrench.svg" alt="" width="40" height="22">Brofix</p>
+    <a class="brand" href="${pageUrl(t.lang, 'index')}"><img class="brand-wrench" src="/assets/brofix-wrench.svg" alt="" width="58" height="32"><img src="/assets/brofix-wordmark.svg" alt="Brofix" width="94" height="32"></a>
     <ul>${links}<li><a href="${there}" hreflang="${other.lang}" lang="${other.lang}">${t.switchTo}</a></li></ul>
     <a class="write" href="mailto:brofixapp@gmail.com">${t.writeUs}</a>
   </div>
