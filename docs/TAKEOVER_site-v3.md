@@ -15,15 +15,26 @@ Public site for the Brofix app: the legal pages Google OAuth and the Play/App St
 Site is live and complete. 2026-10-22: Eran decided the drawn app screens stay; no real screenshots needed.
 Pros lead form live on /pros#join (Web3Forms, key in `build.mjs` FORM_KEY, leads to brofixapp@gmail.com). Privacy policy covers it (commit ad3fe32), 12-month retention enforced by the Apps Script in `docs/gmail-lead-retention.gs`, installed on brofixapp@gmail.com with a daily trigger. App-side sync of the policy is with the builder session (after its PR #47).
 
+2026-10-23: founders' feedback + brand round live on main (`c9f1b66`):
+- /terms he+en, with TERMS_he.md v1.0 final in drafts/legal.
+- Accessibility coordinator added.
+- /pros recruit page: benefit strip, license box for electrical/gas/pest control, 12 hex trades + 25 more, form with trade + city.
+- Home fixes.
+- Charcoal/white palette (dark mode #262626).
+- Wrench in the header, footer and hero (faded, 130%, mirrored in Hebrew).
+- Wrench loosens a nut on scroll.
+- The WhatsApp button is built but hidden until `WA_NUMBER` in build.mjs is set.
+
 ## Next steps
+0. WhatsApp: when Eran sends the number, set `WA_NUMBER` in build.mjs (digits with 972), build, check, push.
 1. Store links: swap the "בקרוב" spans for links in `src/pages/*/index.html` and `pros.html` once Play / App Store URLs exist.
-2. Terms page (`/terms`, he+en) once Eran approves the terms text.
+2. Terms page: done 2026-10-23. Any later legal change goes to the site and to drafts/legal, then the builder runs sync-legal.
 
 ## Open decisions
-- Terms text: not approved yet · options: publish draft / wait for lawyer · recommendation: wait for lawyer review.
+- Terms v1.0 published for the pilot (Eran, 2026-10-23); lawyer review when the company is founded.
 
 ## Owner to-dos
-- Approve terms text when ready.
+- Send the WhatsApp number for the /pros button.
 
 ## Rules that applied
 - Never edit the app's production repo; legal text changes go to the site and to the legal drafts, then tell the builder session to sync.

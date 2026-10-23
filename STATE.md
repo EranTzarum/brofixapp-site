@@ -8,10 +8,10 @@ Last updated: 2026-10-22
 Site v3 live on main (`1ae60da`), deployed by GitHub Actions from `dist/`; legal pages verified with Google.
 
 ## In flight
-Nothing running. Drawn app screens stay (Eran, 2026-10-22).
+Nothing running. 2026-10-23: founders feedback + brand round live (c9f1b66).
 
 ## Next
-Add store links and a terms page when available.
+WhatsApp number (WA_NUMBER), store links when they exist.
 
 <!-- crew:start -->
 # Brofix public site (brofixapp.com) - current state
