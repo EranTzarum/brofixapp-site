@@ -12,3 +12,17 @@ Nothing running. Drawn app screens stay (Eran, 2026-10-22).
 
 ## Next
 Add store links and a terms page when available.
+
+<!-- crew:start -->
+# Brofix public site (brofixapp.com) - current state
+
+Updated: 2026-10-23
+
+## Where we are
+
+site v3 live; founders feedback round
+
+## Next
+
+site-feedback run
+<!-- crew:end -->

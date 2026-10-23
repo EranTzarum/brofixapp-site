@@ -11,3 +11,19 @@ Hebrew RTL is the primary language; every page exists in he and en with the same
 ## Never edit
 
 _(not provided at init)_
+
+<!-- crew:start -->
+# Brofix public site (brofixapp.com) - agent rules
+
+## Gates (must pass before anything merges)
+
+['node build.mjs && node scripts/check.mjs']
+
+## Constraints
+
+see AGENTS.md
+
+## Never edit
+
+_(not provided at init)_
+<!-- crew:end -->

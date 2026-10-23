@@ -11,3 +11,19 @@ src/pages/he and src/pages/en (one file per page, same name in both), src/partia
 ## Invariants
 
 _(not provided at init)_
+
+<!-- crew:start -->
+# Brofix public site (brofixapp.com) - architecture
+
+## Stack
+
+static HTML, Node build script, zero npm deps
+
+## Modules and boundaries
+
+src/pages, src/partials, src/css, src/i18n, build.mjs, scripts
+
+## Invariants
+
+_(not provided at init)_
+<!-- crew:end -->
