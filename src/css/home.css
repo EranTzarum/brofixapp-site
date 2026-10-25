@@ -9,11 +9,6 @@
 @media (max-width: 420px) { .stickers > li { padding-inline: 6px; font-size: .8125rem; } }
 
 
-/* faded logo wrench behind the hero text (home and /pros), like the share image */
-.hero img.mark.big-mark { inset: 50% auto auto 50%; translate: -50% -50%; width: min(1400px, 130vw); max-width: none; opacity: .14;
-  filter: drop-shadow(5px 0 0 #1C1C1C) drop-shadow(-5px 0 0 #1C1C1C) drop-shadow(0 5px 0 #1C1C1C) drop-shadow(0 -5px 0 #1C1C1C); }
-[dir="rtl"] .hero img.mark.big-mark { transform: scaleX(-1); }
-
 /* pros teaser: the logo wrench grips a nut across two flats; as the band scrolls through,
    wrench and nut turn together about the nut centre, anticlockwise (loosening) */
 .nut-scene { display: block; width: min(460px, 92vw); height: auto; overflow: visible; justify-self: center; }
