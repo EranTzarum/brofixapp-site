@@ -11,7 +11,22 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').repl
 
 const SUN = '<svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
 const MOON = '<svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
-const BARS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+// schema.org JSON-LD for the home page: who we are, plus the visible FAQ (built from its <details>, so they never drift).
+const text = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+function homeSchema(lang, body) {
+  const faq = [...body.matchAll(/<details>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)].map(([, q, a]) => ({
+    '@type': 'Question', name: text(q), acceptedAnswer: { '@type': 'Answer', text: text(a) },
+  }));
+  const graph = [
+    { '@type': 'Organization', '@id': `${SITE}/#org`, name: 'Brofix', url: `${SITE}/`, logo: `${SITE}/email/signature.png`, email: 'brofixapp@gmail.com', areaServed: 'IL' },
+    { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: 'Brofix', inLanguage: ['he', 'en'], publisher: { '@id': `${SITE}/#org` } },
+  ];
+  if (faq.length) graph.push({ '@type': 'FAQPage', inLanguage: lang, mainEntity: faq });
+  // Escaping "<" as < keeps "</script" out of the JSON text.
+  return `\n<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>`;
+}
+
+const BARS ='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
 
 export function layout({ t, other, page, meta, body, navPages, footerPages }) {
   const here = pageUrl(t.lang, page);
@@ -35,9 +50,12 @@ export function layout({ t, other, page, meta, body, navPages, footerPages }) {
 <meta property="og:description" content="${esc(meta.description)}">
 <meta property="og:url" content="${SITE}${here}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Brofix">
+<meta property="og:locale" content="${t.lang === 'he' ? 'he_IL' : 'en_US'}">
+<meta property="og:locale:alternate" content="${t.lang === 'he' ? 'en_US' : 'he_IL'}">
 <meta property="og:image" content="${SITE}/assets/og/og-${t.lang}.png">
 <meta name="twitter:card" content="summary_large_image">${meta.robots ? `
-<meta name="robots" content="${esc(meta.robots)}">` : ''}
+<meta name="robots" content="${esc(meta.robots)}">` : ''}${page === 'index' && !meta.robots ? homeSchema(t.lang, body) : ''}
 <meta name="theme-color" content="#F9BA0B">
 <script>document.documentElement.className+=' js';try{var m=localStorage.getItem('theme');if(m)document.documentElement.dataset.theme=m}catch(e){}</script>
 <link rel="icon" type="image/svg+xml" href="/assets/brofix-wrench.svg">
