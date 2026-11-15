@@ -1,5 +1,5 @@
 # TAKEOVER — site-v3 (brofixapp.com)
-Last updated: 2026-10-22 17:30 · branch `main` @ `1ae60da`
+Last updated: 2026-11-14 21:00 · branch `main` @ `124eedb`
 
 ## Goal
 Public site for the Brofix app: the legal pages Google OAuth and the Play/App Store listings need (home, privacy, account deletion), plus a product site Eran can send to customers and pros. Hebrew first, English too, light and dark.
@@ -25,12 +25,17 @@ Pros lead form live on /pros#join (Web3Forms, key in `build.mjs` FORM_KEY, leads
 - Wrench loosens a nut on scroll.
 - The WhatsApp button is built but hidden until `WA_NUMBER` in build.mjs is set.
 
+2026-11-14: Pages config had been deleted (site 404); re-enabled (build_type=workflow, cname brofixapp.com), Eran confirmed. App Store link live (PR #1, `124eedb`): https://apps.apple.com/il/app/id6824639001. Google Play badge still "בקרוב".
+2026-11-14: app 1.4.0 privacy/store draft at `BroFix/drafts/legal/CHANGES_1.4.0_proposal.md`, waiting for Eran's wording OK; 3 code questions sent to the builder (video sound, who sees new-request files, retention).
+
 ## Next steps
 0. WhatsApp: when Eran sends the number, set `WA_NUMBER` in build.mjs (digits with 972), build, check, push.
-1. Store links: swap the "בקרוב" spans for links in `src/pages/*/index.html` and `pros.html` once Play / App Store URLs exist.
+1. Google Play link (https://play.google.com/store/apps/details?id=com.brofix.mobile) when the stores session says Production is approved; same swap as PR #1.
+1b. 1.4.0 policy: after Eran approves + builder answers, apply section A to `src/pages/*/privacy.html` (v1.2), PR via pr-gate; then PRIVACY_POLICY_he.md/_en.md for the builder's sync-legal.
 2. Terms page: done 2026-10-23. Any later legal change goes to the site and to drafts/legal, then the builder runs sync-legal.
 
 ## Open decisions
+- Pilot data resale: needs separate consent + policy section + Amendment 13 check before any collection.
 - Terms v1.0 published for the pilot (Eran, 2026-10-23); lawyer review when the company is founded.
 
 ## Owner to-dos
