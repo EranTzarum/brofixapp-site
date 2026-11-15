@@ -26,7 +26,7 @@ Pros lead form live on /pros#join (Web3Forms, key in `build.mjs` FORM_KEY, leads
 - The WhatsApp button is built but hidden until `WA_NUMBER` in build.mjs is set.
 
 2026-11-14: Pages config had been deleted (site 404); re-enabled (build_type=workflow, cname brofixapp.com), Eran confirmed. App Store link live (PR #1, `124eedb`): https://apps.apple.com/il/app/id6824639001. Google Play badge still "בקרוב".
-2026-11-14: app 1.4.0 privacy/store draft at `BroFix/drafts/legal/CHANGES_1.4.0_proposal.md`, waiting for Eran's wording OK; 3 code questions sent to the builder (video sound, who sees new-request files, retention).
+2026-11-14: app 1.4.0 privacy/store draft at `BroFix/drafts/legal/CHANGES_1.4.0_proposal.md`, approved by Eran 15.11 ("מאשר פרטיות"); site branch feat/privacy-1.2, merge only when 1.4.0 ships and set the effective date to the real ship date.
 
 ## Next steps
 0. WhatsApp: when Eran sends the number, set `WA_NUMBER` in build.mjs (digits with 972), build, check, push.
