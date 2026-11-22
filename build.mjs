@@ -2,6 +2,7 @@
 // Usage: node build.mjs
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { createHash } from 'node:crypto';
 import { layout, pageUrl, SITE } from './src/partials/layout.mjs';
 
 const ROOT = dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1'));
@@ -25,7 +26,11 @@ const i18n = {
 
 rmSync(DIST, { recursive: true, force: true });
 cpSync(join(ROOT, 'static'), DIST, { recursive: true });
-writeFileSync(join(DIST, 'style.css'), CSS.map((f) => readFileSync(join(ROOT, 'src/css', f), 'utf8')).join('\n'));
+const STYLE = CSS.map((f) => readFileSync(join(ROOT, 'src/css', f), 'utf8')).join('\n');
+writeFileSync(join(DIST, 'style.css'), STYLE);
+// content hash on the stylesheet link, so a deploy never pairs new HTML with a cached old style.css
+const STYLE_V = createHash('sha256').update(STYLE).digest('hex').slice(0, 10);
+const withStyleV = (html) => html.replace('href="/style.css"', `href="/style.css?v=${STYLE_V}"`);
 
 for (const lang of ['he', 'en']) {
   const other = i18n[lang === 'he' ? 'en' : 'he'];
@@ -39,12 +44,12 @@ for (const lang of ['he', 'en']) {
     const html = layout({ t: i18n[lang], other, page, meta: JSON.parse(m[1]), body, navPages: NAV, footerPages: FOOTER });
     const out = join(DIST, lang === 'he' ? '' : 'en', file);
     mkdirSync(dirname(out), { recursive: true });
-    writeFileSync(out, html);
+    writeFileSync(out, withStyleV(html));
   }
 }
 
 // GitHub Pages serves 404.html for any missing path; links back to the home pages.
-writeFileSync(join(DIST, '404.html'), layout({
+writeFileSync(join(DIST, '404.html'), withStyleV(layout({
   t: i18n.he, other: i18n.en, page: 'index', navPages: NAV, footerPages: FOOTER,
   meta: { title: 'Brofix · הדף לא נמצא', description: 'הדף לא נמצא / Page not found', robots: 'noindex' },
   body: `<section class="section"><div class="container prose">
@@ -53,7 +58,7 @@ writeFileSync(join(DIST, '404.html'), layout({
   <div class="actions"><a class="btn" href="/">לדף הבית</a><a class="btn btn-ghost" href="/en/" lang="en" hreflang="en">Home (English)</a></div>
 </div></section>
 `,
-}));
+})));
 
 const pages = readdirSync(join(ROOT, 'src/pages/he')).filter((f) => f.endsWith('.html')).map((f) => f.replace(/.html$/, ''));
 writeFileSync(join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
