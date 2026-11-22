@@ -1,5 +1,5 @@
 # TAKEOVER — site-v3 (brofixapp.com)
-Last updated: 2026-11-22 · branch `main` @ `e2da682`
+Last updated: 2026-11-22 15:30 · branch `main` @ `f77f2c8`
 
 ## Goal
 Public site for the Brofix app: the legal pages Google OAuth and the Play/App Store listings need (home, privacy, account deletion), plus a product site Eran can send to customers and pros. Hebrew first, English too, light and dark.
@@ -29,9 +29,11 @@ Pros lead form live on /pros#join (Web3Forms, key in `build.mjs` FORM_KEY, leads
 2026-11-14: app 1.4.0 privacy/store draft at `BroFix/drafts/legal/CHANGES_1.4.0_proposal.md`, approved by Eran 15.11 ("מאשר פרטיות"); site branch feat/privacy-1.2, merge only when 1.4.0 ships and set the effective date to the real ship date.
 
 2026-11-22: privacy + terms v1.2 LIVE (PR #2, e2da682), effective 22.11.2026; Google Play link live (PR #3). Audit fixes mockup approved with changes (https://claude.ai/artifact/HeirTVp6j3JwxCr9sbFxpB): Eran keeps map, hero caption (no chip) and pilot badge as today; approves dark band (#141414 + amber borders in dark). Canary not needed (template is Vercel-only).
+2026-11-22: audit fixes LIVE (PR #4, f77f2c8). Teaser video is music only, no captions needed.
+2026-11-22: external ratings (ADR-054, Google + מדרג) as a /pros reason to join. Mockup https://claude.ai/artifact/DzfQTqZPT4Zx5zKkcLdgpr (before / A perk line / B section with sample quote card / A+B; recommended A+B). Waiting for Eran to pick. Asked the builder session (local_de552e50) when the feature reaches users: UI branches feat/ratings-ui-customer + feat/ratings-ui-pro-admin are not merged. Do not publish before it ships. Not using "nobody else does this" (unverifiable).
 
 ## Next steps
-1. Audit-fix PR (not started): fix `pages/*/` comment in src/css/home.css:1 and pros.css:1 (delete dead caption rule, keep /pros mobile @media), dark band, reveal failsafe in layout.mjs (run reveal first / try-catch), font weights 500/600 -> 400/700 in .m-* rules, aria-hidden phone mockups, tablist arrow keys, video captions. pr-gate --reviewer claude; merge on Eran's "merge".
+1. External ratings on /pros: after Eran picks a variant and the builder confirms ship timing and facts, build he+en, pr-gate --engine claude, merge on Eran's "merge".
 2. en /pros "Join the pilot" still says Google Play internal testing / TestFlight: stale, ask Eran.
 0. WhatsApp: when Eran sends the number, set `WA_NUMBER` in build.mjs (digits with 972), build, check, push.
 1. Google Play link (https://play.google.com/store/apps/details?id=com.brofix.mobile) when the stores session says Production is approved; same swap as PR #1.
