@@ -1,4 +1,4 @@
-/* /pros page rules (src/pages/*/pros.html). Appended after site.css. */
+/* /pros page rules (src/pages/<lang>/pros.html). Appended after site.css. */
 
 /* tighter bands on phones (the page is mostly opened from WhatsApp) */
 @media (max-width: 639.98px) {
