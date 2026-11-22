@@ -98,7 +98,7 @@ function screens(t) {
           <div class="m-row"><span class="m-price">₪${price}</span><span class="m-muted">${t.leaves} ${mins} ${t.min} · ${t.arrives}${at}</span></div>
           ${on ? `<span class="m-btn">${t.choose}</span>` : ''}</div>`;
   const customer = `
-    <figure class="phone"><div class="m-screen">
+    <figure class="phone" aria-hidden="true"><div class="m-screen">
       <header class="m-head"><b>${t.hello}</b><small>${t.whatfix}</small></header>
       <div class="m-body">
         <div class="m-cats">${t.cats.map((c, i) => `<span><i><svg viewBox="0 0 24 24" aria-hidden="true">${CAT[i]}</svg></i>${c}</span>`).join('')}</div>
@@ -107,12 +107,12 @@ function screens(t) {
       </div>
       ${tabbar(t.tabsC, ['home', 'bookmark', 'plus', 'archive', 'gear'], 0)}
     </div></figure>
-    <figure class="phone"><div class="m-screen">
+    <figure class="phone" aria-hidden="true"><div class="m-screen">
       <header class="m-head"><small>${t.job}</small><b>${t.quotes}</b></header>
       <div class="m-body">${quoteCard(t.p1, 320, 15, '14:32', true, true)}${quoteCard(t.p2, 380, 40, '15:05', false, false)}</div>
       ${tabbar(t.tabsC, ['home', 'bookmark', 'plus', 'archive', 'gear'], 0)}
     </div></figure>
-    <figure class="phone"><div class="m-screen m-full">
+    <figure class="phone" aria-hidden="true"><div class="m-screen m-full">
       ${tripMap}
       <div class="m-top"><span class="m-round">${svg('back')}</span><span class="m-updated"><i></i>${t.updated}</span></div>
       <div class="m-sheet">
@@ -124,7 +124,7 @@ function screens(t) {
       </div>
     </div></figure>`;
   const pro = `
-    <figure class="phone"><div class="m-screen m-full">
+    <figure class="phone" aria-hidden="true"><div class="m-screen m-full">
       ${feedMap(t)}
       <header class="m-head m-float"><b>${t.requests}</b><span class="m-seg"><span class="on">${t.mapv}</span><span>${t.listv}</span></span></header>
       <span class="m-note-map">${t.approx}</span>
@@ -134,7 +134,7 @@ function screens(t) {
       </div>
       ${tabbar(t.tabsP, ['map', 'tag', 'tools', 'gear'], 0)}
     </div></figure>
-    <figure class="phone"><div class="m-screen">
+    <figure class="phone" aria-hidden="true"><div class="m-screen">
       <header class="m-head"><small>${t.job}</small><b>${t.newq}</b></header>
       <div class="m-body">
         <label class="m-field"><span>${t.price}</span><b>₪320</b></label>
@@ -148,20 +148,26 @@ function screens(t) {
     <div class="section-head"><h2>${t.title}</h2><p>${t.sub}</p></div>
     <div class="roles" data-role="customer">
       <div class="role-switch" role="tablist">
-        <button type="button" role="tab" aria-selected="true" data-role="customer">${t.customer}</button>
-        <button type="button" role="tab" aria-selected="false" data-role="pro">${t.pro}</button>
+        <button type="button" role="tab" id="tab-customer" aria-controls="panel-customer" aria-selected="true" data-role="customer">${t.customer}</button>
+        <button type="button" role="tab" id="tab-pro" aria-controls="panel-pro" aria-selected="false" tabindex="-1" data-role="pro">${t.pro}</button>
       </div>
-      <div class="role-panel" data-panel="customer">${customer}</div>
-      <div class="role-panel" data-panel="pro">${pro}</div>
+      <div class="role-panel" role="tabpanel" id="panel-customer" aria-labelledby="tab-customer" data-panel="customer">${customer}</div>
+      <div class="role-panel" role="tabpanel" id="panel-pro" aria-labelledby="tab-pro" data-panel="pro">${pro}</div>
     </div>
     <p class="m-note">${t.note}</p>
   </div>
 </section>
 <script>
-document.querySelectorAll('.role-switch button').forEach(function(b){b.addEventListener('click',function(){
-  var r=b.closest('.roles');r.dataset.role=b.dataset.role;
-  r.querySelectorAll('.role-switch button').forEach(function(x){x.setAttribute('aria-selected',x===b)});
-})});
+document.querySelectorAll('.role-switch').forEach(function(list){
+  var tabs=[].slice.call(list.querySelectorAll('[role=tab]'));
+  function pick(b,focus){var r=b.closest('.roles');r.dataset.role=b.dataset.role;
+    tabs.forEach(function(x){x.setAttribute('aria-selected',x===b);x.tabIndex=x===b?0:-1});if(focus)b.focus()}
+  tabs.forEach(function(b,i){b.addEventListener('click',function(){pick(b)});
+    b.addEventListener('keydown',function(e){var n=tabs.length,k=e.key,rtl=getComputedStyle(list).direction==='rtl',j;
+      if(k==='ArrowRight')j=rtl?i-1:i+1;else if(k==='ArrowLeft')j=rtl?i+1:i-1;
+      else if(k==='Home')j=0;else if(k==='End')j=n-1;else return;
+      e.preventDefault();pick(tabs[(j+n)%n],true)})});
+});
 </script>
 `;
 }

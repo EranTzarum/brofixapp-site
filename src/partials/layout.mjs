@@ -86,13 +86,6 @@ ${body}</main>
   </div>
 </footer>
 <script>
-document.querySelector('.theme').addEventListener('click',function(){
-  var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
-  r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}
-});
-document.querySelector('.menu-btn').addEventListener('click',function(){
-  var h=document.querySelector('header.site'),o=h.classList.toggle('open');this.setAttribute('aria-expanded',o);
-});
 // scroll reveal: hidden state lives in CSS under html.js; reveal once when a block enters the viewport
 (function(){
   var els=document.querySelectorAll('main > .section > .container > :not(.steps):not(.stickers), .steps > li, .stickers > li');
@@ -100,6 +93,13 @@ document.querySelector('.menu-btn').addEventListener('click',function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.setProperty('--d',Math.min(i,7)*60+'ms');io.observe(e)});
 })();
+document.querySelector('.theme').addEventListener('click',function(){
+  var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}
+});
+document.querySelector('.menu-btn').addEventListener('click',function(){
+  var h=document.querySelector('header.site'),o=h.classList.toggle('open');this.setAttribute('aria-expanded',o);
+});
 // pros lead form: needs a phone or an email; sends with fetch and shows the result in place
 (function(){
   var f=document.getElementById('lead');if(!f)return;
