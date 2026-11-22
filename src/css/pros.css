@@ -53,3 +53,21 @@
 /* fields in the two-column rows must shrink with their column (inputs default to ~20ch) */
 .lead-form label { min-width: 0; }
 .lead-form input { width: 100%; min-width: 0; }
+
+/* external ratings: copy beside a sample quote card (the card is an illustration, aria-hidden) */
+.ext-ratings { display: grid; gap: var(--s5); align-items: center; }
+@media (min-width: 900px) { .ext-ratings { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); } }
+.checks { list-style: none; padding: 0; margin: var(--s4) 0 0; display: grid; gap: var(--s3); }
+.checks > li { position: relative; padding-inline-start: 28px; }
+.checks > li::before { content: "✓"; position: absolute; inset-inline-start: 0; font-weight: 700; color: var(--text); }
+.qcard-wrap { margin: 0; }
+.qcard { max-width: 360px; margin-inline: auto; padding: 18px; border: 2px solid #1C1C1C; border-radius: 16px; background: #fff; color: #1C1C1C; box-shadow: 6px 6px 0 var(--shadow-c); }
+.qcard-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-weight: 700; }
+.qcard-name { font-size: 1.1rem; }
+.qcard-price { font-size: 1.25rem; }
+.qcard-bf { margin: 4px 0 12px; color: #555; font-size: .95rem; }
+.qcard-lbl { display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #DADDE3; color: #555; font-size: .8rem; }
+.qcard-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; font-size: .95rem; }
+.qcard-row small { margin-inline-start: auto; color: #555; }
+.qcard-tile { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid #DADDE3; border-radius: 6px; background: #F4F4F4; font-weight: 700; }
+.qcard-wrap figcaption { margin-top: 10px; text-align: center; color: var(--muted); font-size: .85rem; }
